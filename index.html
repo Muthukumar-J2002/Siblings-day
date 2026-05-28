@@ -1,28 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Brother Troll Game 😈</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Crackers | Fireworks Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="site-header" id="top">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a class="brand" href="#top" aria-label="Queen Crackers home">
+                <span class="brand-mark">QC</span>
+                <span>
+                    <strong>Queen Crackers</strong>
+                    <small>Premium fireworks</small>
+                </span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#products">Products</a>
+                <a href="#cart">Cart</a>
+                <a href="#admin">Admin</a>
+                <a href="#concept">ASP.NET + SQL</a>
+                <a class="nav-cta" href="#checkout">Generate Bill</a>
+            </div>
+        </nav>
 
-<h1>😈 Catch the Button (If You Can!)</h1>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Diwali • Wedding • Festival • Event supplies</p>
+                <h1>Queen Crackers full fireworks website concept</h1>
+                <p class="hero-text">Browse fireworks, add products to the cart, manage categories, upload product images, and generate a printable customer bill in one complete storefront prototype.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#products">Shop fireworks</a>
+                    <a class="btn ghost" href="#admin">Add product manually</a>
+                </div>
+            </div>
+            <div class="hero-card" aria-label="Queen Crackers offer card">
+                <span class="spark">✦</span>
+                <h2>Festival Combo</h2>
+                <p>Save on curated family packs with sparklers, fountains, rockets, and ground chakkars.</p>
+                <strong>Up to 35% off</strong>
+            </div>
+        </section>
+    </header>
 
-<button id="trollBtn" onmouseover="moveButton()">Catch Me 😜</button>
+    <main>
+        <section class="stats" aria-label="Store highlights">
+            <article>
+                <strong id="productCount">0</strong>
+                <span>Products</span>
+            </article>
+            <article>
+                <strong id="categoryCount">0</strong>
+                <span>Categories</span>
+            </article>
+            <article>
+                <strong>GST Ready</strong>
+                <span>Printable invoice</span>
+            </article>
+            <article>
+                <strong>Local Admin</strong>
+                <span>Image upload demo</span>
+            </article>
+        </section>
 
-<hr>
+        <section class="section" id="products">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Fireworks catalog</p>
+                    <h2>Shop by product or category</h2>
+                </div>
+                <div class="filters">
+                    <label for="categoryFilter">Category</label>
+                    <select id="categoryFilter"></select>
+                    <label for="searchBox">Search</label>
+                    <input id="searchBox" type="search" placeholder="Search crackers...">
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        </section>
 
-<h2>😂 Fake Download Button</h2>
-<button onclick="fakeDownload()">Download Game</button>
+        <section class="section split" id="cart">
+            <div class="panel">
+                <div class="section-heading compact">
+                    <div>
+                        <p class="eyebrow">Shopping cart</p>
+                        <h2>Selected fireworks</h2>
+                    </div>
+                    <button class="btn danger small" id="clearCartBtn">Clear cart</button>
+                </div>
+                <div class="cart-list" id="cartList"></div>
+            </div>
 
-<hr>
+            <aside class="panel checkout" id="checkout">
+                <p class="eyebrow">Bill generator</p>
+                <h2>Customer details</h2>
+                <form id="customerForm">
+                    <label for="customerName">Customer name</label>
+                    <input id="customerName" type="text" placeholder="Enter customer name" required>
+                    <label for="customerPhone">Phone</label>
+                    <input id="customerPhone" type="tel" placeholder="98765 43210" required>
+                    <label for="customerAddress">Delivery address</label>
+                    <textarea id="customerAddress" rows="3" placeholder="Street, city, pincode" required></textarea>
+                    <button class="btn primary full" type="submit">Generate bill</button>
+                </form>
+                <div class="totals" id="cartTotals"></div>
+            </aside>
+        </section>
 
-<h2>🎭 Mood Detector</h2>
-<input type="text" id="mood" placeholder="Type your mood">
-<button onclick="checkMood()">Check</button>
-<p id="moodResult"></p>
+        <section class="section invoice-section" id="invoiceSection" hidden>
+            <div class="invoice-actions">
+                <div>
+                    <p class="eyebrow">Generated bill</p>
+                    <h2>Queen Crackers invoice</h2>
+                </div>
+                <button class="btn ghost" id="printBillBtn">Print bill</button>
+            </div>
+            <div class="invoice" id="invoice"></div>
+        </section>
 
-<script src="script.js"></script>
+        <section class="section admin" id="admin">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Admin panel demo</p>
+                    <h2>Manual add category, product, and image upload</h2>
+                </div>
+                <button class="btn ghost small" id="resetDemoBtn">Reset demo data</button>
+            </div>
+            <div class="admin-grid">
+                <form class="panel" id="categoryForm">
+                    <h3>Add category</h3>
+                    <label for="newCategory">Category name</label>
+                    <input id="newCategory" type="text" placeholder="Example: Gift Boxes" required>
+                    <button class="btn primary" type="submit">Save category</button>
+                    <p class="form-note">Categories are saved in browser local storage for this prototype.</p>
+                </form>
 
+                <form class="panel" id="productForm">
+                    <h3>Add product</h3>
+                    <div class="form-row">
+                        <div>
+                            <label for="productName">Product name</label>
+                            <input id="productName" type="text" placeholder="100 Wala Crackers" required>
+                        </div>
+                        <div>
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" required></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="productPrice">Price (₹)</label>
+                            <input id="productPrice" type="number" min="1" step="1" placeholder="450" required>
+                        </div>
+                        <div>
+                            <label for="productStock">Stock</label>
+                            <input id="productStock" type="number" min="1" step="1" placeholder="25" required>
+                        </div>
+                    </div>
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" rows="3" placeholder="Safe, bright, and family-friendly celebration pack." required></textarea>
+                    <label for="productImage">Upload image</label>
+                    <input id="productImage" type="file" accept="image/*">
+                    <button class="btn primary" type="submit">Add product</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section concept" id="concept">
+            <p class="eyebrow">Full project architecture</p>
+            <h2>ASP.NET Core + SQL Server project concept</h2>
+            <div class="concept-grid">
+                <article>
+                    <h3>Frontend pages</h3>
+                    <ul>
+                        <li>Home, product listing, product detail, cart, checkout, invoice, and admin dashboard.</li>
+                        <li>Responsive layout with Queen Crackers logo, festive colors, and offer cards.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>ASP.NET Core modules</h3>
+                    <ul>
+                        <li>ProductsController, CategoriesController, CartController, OrdersController, and AdminController.</li>
+                        <li>Image upload stored in <code>wwwroot/uploads</code> with validation for file size and image type.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>SQL Server tables</h3>
+                    <ul>
+                        <li>Categories, Products, Customers, Orders, OrderItems, Payments, and AdminUsers.</li>
+                        <li>Use Entity Framework Core migrations for database creation and seed default categories.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>Billing flow</h3>
+                    <ul>
+                        <li>Cart subtotal, 18% GST, delivery charge, grand total, and printable invoice number.</li>
+                        <li>Admin can update stock after each order and export order records.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <strong>Queen Crackers</strong>
+        <span>Celebrate safely. Follow local laws and adult supervision for all fireworks.</span>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
