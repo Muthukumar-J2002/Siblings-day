@@ -599,3 +599,160 @@ form .btn {
         min-height: auto;
     }
 }
+
+.songs {
+    scroll-margin-top: 24px;
+}
+
+.song-stage {
+    align-items: center;
+    background:
+        linear-gradient(135deg, rgba(99,230,190,.18), rgba(255,79,195,.14)),
+        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.song-stage::before {
+    background: radial-gradient(circle, rgba(255,209,102,.36), transparent 64%);
+    content: "";
+    height: 260px;
+    left: -90px;
+    position: absolute;
+    top: -100px;
+    width: 260px;
+}
+
+.song-stage > div {
+    position: relative;
+    z-index: 1;
+}
+
+.song-label {
+    color: var(--mint);
+    font-size: .82rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.song-stage h3 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: -.05em;
+    margin-bottom: 10px;
+}
+
+.song-stage p:not(.song-label),
+.song-card p:not(.eyebrow),
+.verse-party-card p:not(.eyebrow):not(.big-tamil) {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.song-disc {
+    align-items: center;
+    aspect-ratio: 1;
+    background:
+        radial-gradient(circle, #16041e 0 15%, transparent 16%),
+        conic-gradient(from 90deg, var(--gold), var(--pink), var(--violet), var(--mint), var(--gold));
+    border: 10px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    box-shadow: 0 18px 50px rgba(255,79,195,.22);
+    display: flex;
+    flex: 0 0 150px;
+    justify-content: center;
+}
+
+.song-disc span {
+    color: #17031b;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+.song-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.song-card {
+    background: rgba(255,255,255,.075);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 24px;
+    padding: 22px;
+}
+
+.song-card > span {
+    display: inline-block;
+    font-size: 2.25rem;
+    margin-bottom: 14px;
+}
+
+.tamil-verse-party {
+    padding-top: 42px;
+}
+
+.verse-party-card {
+    background:
+        linear-gradient(135deg, rgba(255,209,102,.24), rgba(99,230,190,.15)),
+        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    padding: 30px;
+    position: relative;
+}
+
+.verse-party-card::after {
+    content: "🎂📖🎶";
+    font-size: clamp(3rem, 10vw, 7rem);
+    opacity: .16;
+    position: absolute;
+    right: 24px;
+    top: 16px;
+}
+
+.big-tamil {
+    color: #fff1c7;
+    font-family: "Noto Sans Tamil", "Inter", sans-serif;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    max-width: 850px;
+}
+
+.verse-party-card span {
+    color: var(--sky);
+    display: inline-block;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+@media (max-width: 920px) {
+    .song-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .song-stage {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .song-disc {
+        flex-basis: 120px;
+        width: 120px;
+    }
+
+    .song-grid {
+        grid-template-columns: 1fr;
+    }
+}
