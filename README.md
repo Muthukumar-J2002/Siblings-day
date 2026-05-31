@@ -1,16 +1,16 @@
-# Queen Crackers Fireworks Website
+# EJ Papa Birthday Website
 
-Queen Crackers is a complete static storefront prototype for a fireworks shop. It includes a premium landing page, product catalog, category filter, cart, customer checkout form, printable bill generator, and an admin demo for manually adding categories and products with image uploads.
+A creative one-page birthday website for EJ Papa that mixes Tamil Bible-inspired blessing words, English birthday wishes, family fun, confetti, a random wish generator, and a local memory wall.
 
 ## Features
 
-- Queen Crackers brand logo and responsive fireworks storefront UI.
-- Product catalog with category filtering and search.
-- Add-to-cart workflow with quantity controls and cart clearing.
-- Bill generation with subtotal, 18% GST, delivery charge, grand total, invoice number, and print support.
-- Admin panel concept for manually adding categories, products, stock, price, description, and uploaded product images.
-- Browser `localStorage` persistence for demo products, categories, and cart data.
-- ASP.NET Core + SQL Server architecture concept section for converting the prototype into a full database-backed web application.
+- Responsive birthday landing page with Tamil and English copy.
+- Bible-inspired Tamil blessing cards with verse references.
+- Filterable blessing cards for Tamil, Bible, fun, or all mixed wishes.
+- Interactive birthday confetti and random blessing word picker.
+- Creative Tamil-English birthday wish generator.
+- Memory wall form saved with browser `localStorage` for demo notes.
+- Birthday prayer section with Tamil blessing tags.
 
 ## Run locally
 
@@ -21,12 +21,3 @@ python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`.
-
-## Suggested ASP.NET Core + SQL Server build plan
-
-1. Create an ASP.NET Core MVC or Razor Pages project.
-2. Add Entity Framework Core models for `Category`, `Product`, `Customer`, `Order`, `OrderItem`, `Payment`, and `AdminUser`.
-3. Store uploaded images in `wwwroot/uploads` and save the image path in the `Products` table.
-4. Build admin CRUD pages for categories and products.
-5. Build customer pages for product listing, cart, checkout, and invoice printing.
-6. Use SQL Server migrations to create the database and seed default Queen Crackers categories.
