@@ -1,217 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queen Crackers | Fireworks Store</title>
+    <title>EJ Papa Birthday | Tamil Bible Blessings</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="site-header" id="top">
         <nav class="navbar" aria-label="Primary navigation">
-            <a class="brand" href="#top" aria-label="Queen Crackers home">
-                <span class="brand-mark">QC</span>
+            <a class="brand" href="#top" aria-label="EJ Papa birthday home">
+                <span class="brand-mark">EJ</span>
                 <span>
-                    <strong>Queen Crackers</strong>
-                    <small>Premium fireworks</small>
+                    <strong>Happy Birthday Papa</strong>
+                    <small>தமிழ் Bible blessings + fun wishes</small>
                 </span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
             <div class="nav-links" id="navLinks">
-                <a href="#products">Products</a>
-                <a href="#cart">Cart</a>
-                <a href="#admin">Admin</a>
-                <a href="#concept">ASP.NET + SQL</a>
-                <a class="nav-cta" href="#checkout">Generate Bill</a>
+                <a href="#blessings">Blessings</a>
+                <a href="#bibleWords">Bible Words</a>
+                <a href="#wishMixer">Wish Mixer</a>
+                <a href="#memoryWall">Memory Wall</a>
+                <a class="nav-cta" href="#prayer">Birthday Prayer</a>
             </div>
         </nav>
 
         <section class="hero">
             <div class="hero-copy">
-                <p class="eyebrow">Diwali • Wedding • Festival • Event supplies</p>
-                <h1>Queen Crackers full fireworks website concept</h1>
-                <p class="hero-text">Browse fireworks, add products to the cart, manage categories, upload product images, and generate a printable customer bill in one complete storefront prototype.</p>
+                <p class="eyebrow">Grace • Joy • Family • Celebration</p>
+                <h1>இனிய பிறந்தநாள் வாழ்த்துகள், EJ Papa!</h1>
+                <p class="hero-text">A colorful one-page birthday website mixing Tamil Bible-inspired blessing words, English love notes, playful family fun, and a sweet prayer for Papa.</p>
                 <div class="hero-actions">
-                    <a class="btn primary" href="#products">Shop fireworks</a>
-                    <a class="btn ghost" href="#admin">Add product manually</a>
+                    <a class="btn primary" href="#bibleWords">Read Bible words</a>
+                    <button class="btn ghost" id="celebrateBtn" type="button">Throw birthday confetti 🎉</button>
                 </div>
             </div>
-            <div class="hero-card" aria-label="Queen Crackers offer card">
+            <div class="hero-card" aria-label="Birthday blessing card">
                 <span class="spark">✦</span>
-                <h2>Festival Combo</h2>
-                <p>Save on curated family packs with sparklers, fountains, rockets, and ground chakkars.</p>
-                <strong>Up to 35% off</strong>
+                <p class="verse-ref">Numbers 6:24-26</p>
+                <h2>கர்த்தர் உங்களை ஆசீர்வதித்து காக்கிறார்.</h2>
+                <p>Papa, may God’s face shine on you, fill your heart with peace, and crown this new year with laughter.</p>
+                <strong>Stay blessed, loved, and joyful!</strong>
             </div>
         </section>
     </header>
 
     <main>
-        <section class="stats" aria-label="Store highlights">
+        <section class="stats" aria-label="Birthday highlights">
             <article>
-                <strong id="productCount">0</strong>
-                <span>Products</span>
+                <strong>100%</strong>
+                <span>Family love</span>
             </article>
             <article>
-                <strong id="categoryCount">0</strong>
-                <span>Categories</span>
+                <strong>7+</strong>
+                <span>Bible blessings</span>
             </article>
             <article>
-                <strong>GST Ready</strong>
-                <span>Printable invoice</span>
+                <strong>∞</strong>
+                <span>Smiles for Papa</span>
             </article>
             <article>
-                <strong>Local Admin</strong>
-                <span>Image upload demo</span>
+                <strong>Amen</strong>
+                <span>Prayerful wishes</span>
             </article>
         </section>
 
-        <section class="section" id="products">
+        <section class="section" id="blessings">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">Fireworks catalog</p>
-                    <h2>Shop by product or category</h2>
+                    <p class="eyebrow">Tamil + English wishes</p>
+                    <h2>Best birthday words for Papa</h2>
                 </div>
-                <div class="filters">
-                    <label for="categoryFilter">Category</label>
-                    <select id="categoryFilter"></select>
-                    <label for="searchBox">Search</label>
-                    <input id="searchBox" type="search" placeholder="Search crackers...">
+                <div class="filters" aria-label="Blessing filters">
+                    <button class="filter-chip active" type="button" data-filter="all">All mixed</button>
+                    <button class="filter-chip" type="button" data-filter="tamil">Tamil</button>
+                    <button class="filter-chip" type="button" data-filter="bible">Bible</button>
+                    <button class="filter-chip" type="button" data-filter="fun">Fun</button>
                 </div>
             </div>
-            <div class="product-grid" id="productGrid" aria-live="polite"></div>
+            <div class="blessing-grid" id="blessingGrid" aria-live="polite"></div>
         </section>
 
-        <section class="section split" id="cart">
-            <div class="panel">
-                <div class="section-heading compact">
-                    <div>
-                        <p class="eyebrow">Shopping cart</p>
-                        <h2>Selected fireworks</h2>
-                    </div>
-                    <button class="btn danger small" id="clearCartBtn">Clear cart</button>
+        <section class="section bible" id="bibleWords">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Bible-inspired promise cards</p>
+                    <h2>Tamil Bible words for Papa’s new year</h2>
                 </div>
-                <div class="cart-list" id="cartList"></div>
+                <button class="btn ghost small" id="shuffleVerseBtn" type="button">Shuffle verse ✨</button>
+            </div>
+            <div class="featured-verse" id="featuredVerse"></div>
+            <div class="verse-grid" id="verseGrid"></div>
+            <p class="note">These are short Tamil blessing lines inspired by the listed Bible references, written for a birthday greeting website.</p>
+        </section>
+
+        <section class="section split" id="wishMixer">
+            <div class="panel mixer-panel">
+                <p class="eyebrow">Creative + different + fun</p>
+                <h2>Birthday wish mixer</h2>
+                <p class="muted">Click the button to generate a fresh Tamil-English birthday line for EJ Papa.</p>
+                <div class="generated-wish" id="generatedWish">Papa, your life is our favorite testimony of love, faith, and laughter.</div>
+                <button class="btn primary" id="generateWishBtn" type="button">Generate new wish</button>
             </div>
 
-            <aside class="panel checkout" id="checkout">
-                <p class="eyebrow">Bill generator</p>
-                <h2>Customer details</h2>
-                <form id="customerForm">
-                    <label for="customerName">Customer name</label>
-                    <input id="customerName" type="text" placeholder="Enter customer name" required>
-                    <label for="customerPhone">Phone</label>
-                    <input id="customerPhone" type="tel" placeholder="98765 43210" required>
-                    <label for="customerAddress">Delivery address</label>
-                    <textarea id="customerAddress" rows="3" placeholder="Street, city, pincode" required></textarea>
-                    <button class="btn primary full" type="submit">Generate bill</button>
-                </form>
-                <div class="totals" id="cartTotals"></div>
+            <aside class="panel fun-card">
+                <p class="eyebrow">Family fun zone</p>
+                <h2>Mini celebration</h2>
+                <ul class="fun-list">
+                    <li>🎂 Cake count: one big slice for Papa first.</li>
+                    <li>📸 Photo rule: everyone must smile like it is Sunday best.</li>
+                    <li>🙌 Blessing rule: one Bible word, one hug, one loud “Amen!”</li>
+                </ul>
+                <button class="btn ghost full" id="spinBlessingBtn" type="button">Pick Papa’s blessing word</button>
+                <strong class="blessing-word" id="blessingWord">Grace</strong>
             </aside>
         </section>
 
-        <section class="section invoice-section" id="invoiceSection" hidden>
-            <div class="invoice-actions">
-                <div>
-                    <p class="eyebrow">Generated bill</p>
-                    <h2>Queen Crackers invoice</h2>
-                </div>
-                <button class="btn ghost" id="printBillBtn">Print bill</button>
-            </div>
-            <div class="invoice" id="invoice"></div>
-        </section>
-
-        <section class="section admin" id="admin">
+        <section class="section memory" id="memoryWall">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">Admin panel demo</p>
-                    <h2>Manual add category, product, and image upload</h2>
+                    <p class="eyebrow">Memory wall</p>
+                    <h2>Add a sweet note for Papa</h2>
                 </div>
-                <button class="btn ghost small" id="resetDemoBtn">Reset demo data</button>
+                <button class="btn ghost small" id="resetNotesBtn" type="button">Reset notes</button>
             </div>
-            <div class="admin-grid">
-                <form class="panel" id="categoryForm">
-                    <h3>Add category</h3>
-                    <label for="newCategory">Category name</label>
-                    <input id="newCategory" type="text" placeholder="Example: Gift Boxes" required>
-                    <button class="btn primary" type="submit">Save category</button>
-                    <p class="form-note">Categories are saved in browser local storage for this prototype.</p>
+            <div class="memory-layout">
+                <form class="panel" id="memoryForm">
+                    <label for="memoryName">Your name</label>
+                    <input id="memoryName" type="text" placeholder="Example: Daughter, Son, Family" required>
+                    <label for="memoryMessage">Birthday note</label>
+                    <textarea id="memoryMessage" rows="4" placeholder="Write a loving memory or blessing..." required></textarea>
+                    <button class="btn primary" type="submit">Add note</button>
+                    <p class="form-note">Notes are saved in this browser with local storage for the birthday page demo.</p>
                 </form>
-
-                <form class="panel" id="productForm">
-                    <h3>Add product</h3>
-                    <div class="form-row">
-                        <div>
-                            <label for="productName">Product name</label>
-                            <input id="productName" type="text" placeholder="100 Wala Crackers" required>
-                        </div>
-                        <div>
-                            <label for="productCategory">Category</label>
-                            <select id="productCategory" required></select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div>
-                            <label for="productPrice">Price (₹)</label>
-                            <input id="productPrice" type="number" min="1" step="1" placeholder="450" required>
-                        </div>
-                        <div>
-                            <label for="productStock">Stock</label>
-                            <input id="productStock" type="number" min="1" step="1" placeholder="25" required>
-                        </div>
-                    </div>
-                    <label for="productDescription">Description</label>
-                    <textarea id="productDescription" rows="3" placeholder="Safe, bright, and family-friendly celebration pack." required></textarea>
-                    <label for="productImage">Upload image</label>
-                    <input id="productImage" type="file" accept="image/*">
-                    <button class="btn primary" type="submit">Add product</button>
-                </form>
+                <div class="memory-list" id="memoryList" aria-live="polite"></div>
             </div>
         </section>
 
-        <section class="section concept" id="concept">
-            <p class="eyebrow">Full project architecture</p>
-            <h2>ASP.NET Core + SQL Server project concept</h2>
-            <div class="concept-grid">
-                <article>
-                    <h3>Frontend pages</h3>
-                    <ul>
-                        <li>Home, product listing, product detail, cart, checkout, invoice, and admin dashboard.</li>
-                        <li>Responsive layout with Queen Crackers logo, festive colors, and offer cards.</li>
-                    </ul>
-                </article>
-                <article>
-                    <h3>ASP.NET Core modules</h3>
-                    <ul>
-                        <li>ProductsController, CategoriesController, CartController, OrdersController, and AdminController.</li>
-                        <li>Image upload stored in <code>wwwroot/uploads</code> with validation for file size and image type.</li>
-                    </ul>
-                </article>
-                <article>
-                    <h3>SQL Server tables</h3>
-                    <ul>
-                        <li>Categories, Products, Customers, Orders, OrderItems, Payments, and AdminUsers.</li>
-                        <li>Use Entity Framework Core migrations for database creation and seed default categories.</li>
-                    </ul>
-                </article>
-                <article>
-                    <h3>Billing flow</h3>
-                    <ul>
-                        <li>Cart subtotal, 18% GST, delivery charge, grand total, and printable invoice number.</li>
-                        <li>Admin can update stock after each order and export order records.</li>
-                    </ul>
-                </article>
+        <section class="section prayer" id="prayer">
+            <div class="prayer-card">
+                <p class="eyebrow">Birthday prayer</p>
+                <h2>அன்பான இயேசுவே, எங்கள் Papa-வை ஆசீர்வதியும்</h2>
+                <p>Lord Jesus, thank You for EJ Papa’s life. Give him strong health, peaceful days, wise decisions, joyful family moments, and a heart full of Your presence. Let this birthday begin a year of grace, protection, and answered prayers. Amen.</p>
+                <div class="prayer-tags" aria-label="Prayer tags">
+                    <span>சமாதானம்</span>
+                    <span>ஆரோக்கியம்</span>
+                    <span>சந்தோஷம்</span>
+                    <span>ஆசீர்வாதம்</span>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <strong>Queen Crackers</strong>
-        <span>Celebrate safely. Follow local laws and adult supervision for all fireworks.</span>
+        <strong>EJ Papa Birthday Website</strong>
+        <span>Made with Tamil Bible words, family love, and joyful birthday fun.</span>
     </footer>
 
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
     <script src="script.js"></script>
 </body>
 </html>
