@@ -1,5 +1,9 @@
 const NOTES_KEY = "ejPapaBirthdayNotes";
 
+let audioContext;
+let songTimer;
+let isSongPlaying = false;
+
 const blessings = [
     {
         category: "tamil",
@@ -114,7 +118,11 @@ const elements = {
     blessingWord: document.getElementById("blessingWord"),
     memoryForm: document.getElementById("memoryForm"),
     memoryList: document.getElementById("memoryList"),
-    resetNotesBtn: document.getElementById("resetNotesBtn")
+    resetNotesBtn: document.getElementById("resetNotesBtn"),
+    playSongBtn: document.getElementById("playSongBtn"),
+    stopSongBtn: document.getElementById("stopSongBtn"),
+    songTitle: document.getElementById("songTitle"),
+    equalizer: document.getElementById("equalizer")
 };
 
 function loadNotes() {
@@ -215,6 +223,59 @@ function resetNotes() {
     renderNotes();
 }
 
+function playTone(frequency, startTime, duration, type = "sine", gainValue = 0.08) {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, startTime);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(gainValue, startTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+    oscillator.connect(gain).connect(audioContext.destination);
+    oscillator.start(startTime);
+    oscillator.stop(startTime + duration + 0.03);
+}
+
+function scheduleBirthdayMelody() {
+    if (!audioContext || !isSongPlaying) return;
+
+    const now = audioContext.currentTime + 0.05;
+    const melody = [392, 440, 494, 587, 523, 494, 440, 392, 330, 392, 440, 523];
+    const chords = [196, 247, 262, 294];
+
+    melody.forEach((frequency, index) => {
+        playTone(frequency, now + index * 0.24, 0.2, "triangle", 0.075);
+        if (index % 3 === 0) {
+            playTone(chords[(index / 3) % chords.length], now + index * 0.24, 0.42, "sine", 0.045);
+        }
+    });
+
+    songTimer = window.setTimeout(scheduleBirthdayMelody, 2900);
+}
+
+function startSong() {
+    if (isSongPlaying) return;
+
+    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    audioContext.resume();
+    isSongPlaying = true;
+    elements.songTitle.textContent = "Now playing: Joyful praise beat for EJ Papa 🎶";
+    elements.equalizer.classList.add("playing");
+    elements.playSongBtn.textContent = "Song playing ♪";
+    scheduleBirthdayMelody();
+    throwConfetti();
+}
+
+function stopSong() {
+    isSongPlaying = false;
+    window.clearTimeout(songTimer);
+    elements.songTitle.textContent = "Paused: Happy Praise Beat for Papa";
+    elements.equalizer.classList.remove("playing");
+    elements.playSongBtn.textContent = "Play song ▶";
+}
+
 function throwConfetti() {
     const confettiIcons = ["🎉", "🎂", "✨", "💛", "📖", "🎈", "🙌"];
 
@@ -259,6 +320,8 @@ elements.spinBlessingBtn.addEventListener("click", () => {
 });
 elements.memoryForm.addEventListener("submit", addNote);
 elements.resetNotesBtn.addEventListener("click", resetNotes);
+elements.playSongBtn.addEventListener("click", startSong);
+elements.stopSongBtn.addEventListener("click", stopSong);
 
 renderBlessings();
 renderVerses();
