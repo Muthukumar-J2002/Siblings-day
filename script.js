@@ -36,6 +36,24 @@ const blessings = [
         icon: "🥳",
         title: "Family headline",
         text: "Breaking news: EJ Papa is officially older, wiser, cooler, and still everyone’s favorite hero."
+    },
+    {
+        category: "bible",
+        icon: "✝️",
+        title: "Jesus covering",
+        text: "இயேசுவின் அன்பு Papa-வின் வீட்டையும், வழியையும், எண்ணங்களையும் ஒளியாய் நடத்தட்டும்."
+    },
+    {
+        category: "tamil",
+        icon: "🎁",
+        title: "புது வருட கிருபை",
+        text: "இந்த புதிய வயதில் ஒவ்வொரு நாளும் புதிய கிருபை, புதிய பெலன், புதிய சாட்சி உண்டாகட்டும்."
+    },
+    {
+        category: "fun",
+        icon: "🎵",
+        title: "Worship birthday mood",
+        text: "Cake cut பண்ணும் முன் worship volume உயரட்டும்; Papa-வின் birthday praise party ஆரம்பம்!"
     }
 ];
 
@@ -69,6 +87,46 @@ const verses = [
         reference: "Isaiah 46:4",
         tamil: "முடிவுவரை நான் உங்களைத் தாங்குவேன் என்று கர்த்தர் சொல்கிறார்.",
         english: "God’s sustaining love is Papa’s strength in every season."
+    },
+    {
+        reference: "Psalm 23:1",
+        tamil: "கர்த்தர் என் மேய்ப்பர்; எனக்குக் குறைவில்லை.",
+        english: "May Papa lack no good thing under the Shepherd’s care."
+    },
+    {
+        reference: "Jeremiah 29:11",
+        tamil: "நன்மையான எதிர்காலத்தையும் நம்பிக்கையையும் தேவன் தருகிறார்.",
+        english: "A promise of hope-filled days and peaceful plans."
+    },
+    {
+        reference: "Philippians 4:13",
+        tamil: "கிறிஸ்துவினாலே எல்லாவற்றையும் செய்ய பெலன் கிடைக்கிறது.",
+        english: "Christ gives Papa strength for every responsibility."
+    },
+    {
+        reference: "Psalm 121:7-8",
+        tamil: "கர்த்தர் உங்கள் போக்கும் வரத்தையும் காக்கிறார்.",
+        english: "God watches over Papa’s going out and coming in."
+    },
+    {
+        reference: "Isaiah 40:31",
+        tamil: "கர்த்தரை நம்புகிறவர்கள் புதிய பெலன் அடைவார்கள்.",
+        english: "May Papa rise with renewed strength and courage."
+    },
+    {
+        reference: "Romans 15:13",
+        tamil: "நம்பிக்கையின் தேவன் சந்தோஷத்தாலும் சமாதானத்தாலும் நிரப்பட்டும்.",
+        english: "May joy, peace, and hope overflow in Papa’s heart."
+    },
+    {
+        reference: "Psalm 118:24",
+        tamil: "இது கர்த்தர் உண்டாக்கின நாள்; இதில் களிகூருவோம்.",
+        english: "This birthday is a day to rejoice and give thanks."
+    },
+    {
+        reference: "Deuteronomy 28:6",
+        tamil: "உள்ளே வரும்போதும் வெளியே போகும்போதும் ஆசீர்வாதம் உண்டாகும்.",
+        english: "May blessing follow Papa in every place."
     }
 ];
 
@@ -93,7 +151,34 @@ const wishEndings = [
     "We love you bigger than the birthday cake!"
 ];
 
-const blessingWords = ["Grace", "Joy", "Peace", "Strength", "Health", "Favor", "Wisdom", "சமாதானம்", "ஆசீர்வாதம்"];
+const worshipSongs = [
+    {
+        title: "John Jebaraj - Idhuvarai Nadathi praise mood",
+        mood: "A joyful song idea for claps, smiles, and a powerful birthday praise opening.",
+        query: "John Jebaraj Idhuvarai Nadathi"
+    },
+    {
+        title: "John Jebaraj - Oruvarum Saera worship",
+        mood: "A soft worship moment while the family prays over EJ Papa.",
+        query: "John Jebaraj Oruvarum Saera"
+    },
+    {
+        title: "John Jebaraj - Nandri Solli thanksgiving",
+        mood: "A thank-you-to-Jesus mood for Papa’s life, protection, and family testimony.",
+        query: "John Jebaraj Nandri Solli"
+    },
+    {
+        title: "John Jebaraj - Tamil Christian birthday praise",
+        mood: "A custom playlist search to keep the celebration worshipful and energetic.",
+        query: "John Jebaraj Tamil Christian worship birthday"
+    }
+];
+
+const tamilBibleWords = [
+    "கிருபை", "சமாதானம்", "ஜெயம்", "பெலன்", "சுகம்", "நம்பிக்கை", "வாக்குத்தத்தம்", "ஆசீர்வாதம்", "ஞானம்", "கருணை", "ஒளி", "இரக்கம்"
+];
+
+const blessingWords = ["Grace", "Joy", "Peace", "Strength", "Health", "Favor", "Wisdom", "சமாதானம்", "ஆசீர்வாதம்", "கிருபை", "ஜெயம்", "பெலன்"];
 
 let selectedFilter = "all";
 let notes = loadNotes();
@@ -114,7 +199,13 @@ const elements = {
     blessingWord: document.getElementById("blessingWord"),
     memoryForm: document.getElementById("memoryForm"),
     memoryList: document.getElementById("memoryList"),
-    resetNotesBtn: document.getElementById("resetNotesBtn")
+    resetNotesBtn: document.getElementById("resetNotesBtn"),
+    songGrid: document.getElementById("songGrid"),
+    songTitle: document.getElementById("songTitle"),
+    songMood: document.getElementById("songMood"),
+    songSearchLink: document.getElementById("songSearchLink"),
+    surpriseSongBtn: document.getElementById("surpriseSongBtn"),
+    tamilWordCloud: document.getElementById("tamilWordCloud")
 };
 
 function loadNotes() {
@@ -178,6 +269,29 @@ function renderVerses(featured = verses[0]) {
 
 function generateWish() {
     elements.generatedWish.textContent = `${randomItem(wishOpeners)} ${randomItem(wishMiddles)}. ${randomItem(wishEndings)}`;
+}
+
+function renderSongs() {
+    elements.songGrid.innerHTML = worshipSongs.map((song, index) => `
+        <button class="song-card" type="button" data-song-index="${index}">
+            <span class="song-number">0${index + 1}</span>
+            <strong>${escapeHtml(song.title)}</strong>
+            <small>${escapeHtml(song.mood)}</small>
+        </button>
+    `).join("");
+}
+
+function selectSong(song) {
+    elements.songTitle.textContent = song.title;
+    elements.songMood.textContent = song.mood;
+    elements.songSearchLink.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(song.query)}`;
+    throwConfetti();
+}
+
+function renderTamilWords() {
+    elements.tamilWordCloud.innerHTML = tamilBibleWords.map((word, index) => `
+        <span style="--delay: ${index * 0.08}s">${escapeHtml(word)}</span>
+    `).join("");
 }
 
 function renderNotes() {
@@ -253,6 +367,12 @@ elements.filterChips.forEach(chip => {
 elements.shuffleVerseBtn.addEventListener("click", () => renderVerses(randomItem(verses)));
 elements.celebrateBtn.addEventListener("click", throwConfetti);
 elements.generateWishBtn.addEventListener("click", generateWish);
+elements.songGrid.addEventListener("click", event => {
+    const songCard = event.target.closest(".song-card");
+    if (!songCard) return;
+    selectSong(worshipSongs[Number(songCard.dataset.songIndex)]);
+});
+elements.surpriseSongBtn.addEventListener("click", () => selectSong(randomItem(worshipSongs)));
 elements.spinBlessingBtn.addEventListener("click", () => {
     elements.blessingWord.textContent = randomItem(blessingWords);
     throwConfetti();
@@ -262,4 +382,6 @@ elements.resetNotesBtn.addEventListener("click", resetNotes);
 
 renderBlessings();
 renderVerses();
+renderSongs();
+renderTamilWords();
 renderNotes();
