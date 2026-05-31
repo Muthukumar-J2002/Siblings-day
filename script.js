@@ -39,6 +39,39 @@ const blessings = [
     }
 ];
 
+const songDedications = [
+    {
+        title: "Ebenesarae",
+        vibe: "Thanksgiving opener",
+        note: "Start with grateful hearts: Papa’s life is a testimony of God’s help until today."
+    },
+    {
+        title: "Uyar Malaiyo",
+        vibe: "Faith anthem",
+        note: "A strong celebration moment for saying no mountain is bigger than God’s grace."
+    },
+    {
+        title: "Asaathiyangal",
+        vibe: "Miracle mood",
+        note: "Dedicate this when the family prays for impossible doors to open in Papa’s new year."
+    },
+    {
+        title: "Dhayavu",
+        vibe: "Grace melody",
+        note: "A soft, thankful song choice for remembering God’s kindness over Papa and the family."
+    },
+    {
+        title: "Kaivida Maatar",
+        vibe: "Comfort chorus",
+        note: "Perfect for a blessing moment: God will not leave Papa in any season."
+    },
+    {
+        title: "Jeba Geetham",
+        vibe: "Prayer finale",
+        note: "Close the birthday prayer with worship, then shout, “Happy birthday EJ Papa!”"
+    }
+];
+
 const verses = [
     {
         reference: "Numbers 6:24-26",
@@ -73,6 +106,7 @@ const verses = [
 ];
 
 const wishOpeners = [
+    "Papa, John Jebaraj playlist போல உங்கள் faith repeat mode-ல ஓடட்டும்",
     "Papa, உங்கள் சிரிப்பு எங்கள் வீட்டின் sunrise",
     "EJ Papa, your faith makes ordinary days feel blessed",
     "அன்பான Papa, உங்கள் அன்பு எங்களுக்கு ஒரு living Bible lesson",
@@ -80,6 +114,7 @@ const wishOpeners = [
 ];
 
 const wishMiddles = [
+    "so let worship, cake, and Tamil Bible blessings fill the hall",
     "so may this birthday overflow with grace",
     "and may every step be covered by God’s protection",
     "with cake, hugs, photos, and a thousand happy memories",
@@ -87,13 +122,14 @@ const wishMiddles = [
 ];
 
 const wishEndings = [
+    "Amen சொல்லும் முன்பே cake வெட்ட ready!",
     "இனிய பிறந்தநாள் வாழ்த்துகள்!",
     "Happy birthday, our family hero!",
     "God bless you more and more, Amen!",
     "We love you bigger than the birthday cake!"
 ];
 
-const blessingWords = ["Grace", "Joy", "Peace", "Strength", "Health", "Favor", "Wisdom", "சமாதானம்", "ஆசீர்வாதம்"];
+const blessingWords = ["Grace", "Joy", "Peace", "Strength", "Health", "Favor", "Wisdom", "சமாதானம்", "ஆசீர்வாதம்", "தயவு", "ஜெபம்", "ஸ்தோத்திரம்"];
 
 let selectedFilter = "all";
 let notes = loadNotes();
@@ -106,6 +142,10 @@ const elements = {
     featuredVerse: document.getElementById("featuredVerse"),
     verseGrid: document.getElementById("verseGrid"),
     shuffleVerseBtn: document.getElementById("shuffleVerseBtn"),
+    surpriseSongBtn: document.getElementById("surpriseSongBtn"),
+    songGrid: document.getElementById("songGrid"),
+    songTitle: document.getElementById("songTitle"),
+    songMood: document.getElementById("songMood"),
     celebrateBtn: document.getElementById("celebrateBtn"),
     confettiLayer: document.getElementById("confettiLayer"),
     generateWishBtn: document.getElementById("generateWishBtn"),
@@ -156,6 +196,22 @@ function renderBlessings() {
             <p class="eyebrow">${escapeHtml(blessing.category)}</p>
             <h3>${escapeHtml(blessing.title)}</h3>
             <p>${escapeHtml(blessing.text)}</p>
+        </article>
+    `).join("");
+}
+
+function setFeaturedSong(song = songDedications[0]) {
+    elements.songTitle.textContent = song.title;
+    elements.songMood.textContent = `${song.vibe}: ${song.note}`;
+}
+
+function renderSongs() {
+    elements.songGrid.innerHTML = songDedications.map(song => `
+        <article class="song-card">
+            <span aria-hidden="true">🎧</span>
+            <p class="eyebrow">${escapeHtml(song.vibe)}</p>
+            <h3>${escapeHtml(song.title)}</h3>
+            <p>${escapeHtml(song.note)}</p>
         </article>
     `).join("");
 }
@@ -251,6 +307,10 @@ elements.filterChips.forEach(chip => {
 });
 
 elements.shuffleVerseBtn.addEventListener("click", () => renderVerses(randomItem(verses)));
+elements.surpriseSongBtn.addEventListener("click", () => {
+    setFeaturedSong(randomItem(songDedications));
+    throwConfetti();
+});
 elements.celebrateBtn.addEventListener("click", throwConfetti);
 elements.generateWishBtn.addEventListener("click", generateWish);
 elements.spinBlessingBtn.addEventListener("click", () => {
@@ -261,5 +321,7 @@ elements.memoryForm.addEventListener("submit", addNote);
 elements.resetNotesBtn.addEventListener("click", resetNotes);
 
 renderBlessings();
+renderSongs();
+setFeaturedSong();
 renderVerses();
 renderNotes();
