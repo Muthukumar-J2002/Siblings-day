@@ -599,3 +599,309 @@ form .btn {
         min-height: auto;
     }
 }
+
+.btn.secondary {
+    background: linear-gradient(135deg, var(--sky), var(--mint));
+    box-shadow: 0 16px 40px rgba(99, 230, 190, .18);
+    color: #06211d;
+}
+
+.mini-praise-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.mini-praise-strip span {
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    color: #fff1c7;
+    font-family: "Noto Sans Tamil", "Inter", sans-serif;
+    font-weight: 900;
+    padding: 8px 11px;
+}
+
+.worship {
+    position: relative;
+}
+
+.worship::before,
+.jesus-section::before {
+    background: linear-gradient(135deg, rgba(255, 209, 102, .18), rgba(123, 223, 242, .12));
+    border-radius: 999px;
+    content: "";
+    filter: blur(24px);
+    height: 120px;
+    position: absolute;
+    right: 6%;
+    top: 58px;
+    width: 120px;
+    z-index: -1;
+}
+
+.worship-layout,
+.jesus-layout {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
+}
+
+.music-player {
+    overflow: hidden;
+    position: relative;
+}
+
+.record-disc {
+    animation: spinRecord 9s linear infinite;
+    background:
+        radial-gradient(circle, #120520 0 10%, var(--gold) 11% 17%, transparent 18%),
+        repeating-radial-gradient(circle, rgba(255,255,255,.22) 0 2px, rgba(0,0,0,.16) 3px 8px),
+        linear-gradient(135deg, var(--pink), var(--violet));
+    border: 8px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    display: block;
+    height: 150px;
+    margin-bottom: 24px;
+    width: 150px;
+}
+
+.music-player h3 {
+    font-size: clamp(1.55rem, 3vw, 2.35rem);
+    line-height: 1.2;
+}
+
+.player-bars {
+    align-items: end;
+    display: flex;
+    gap: 7px;
+    height: 52px;
+    margin: 22px 0;
+}
+
+.player-bars span {
+    animation: pulseBars 1.1s ease-in-out infinite alternate;
+    background: linear-gradient(180deg, var(--gold), var(--pink));
+    border-radius: 999px;
+    height: 24px;
+    width: 12px;
+}
+
+.player-bars span:nth-child(2) { animation-delay: .12s; height: 38px; }
+.player-bars span:nth-child(3) { animation-delay: .24s; height: 50px; }
+.player-bars span:nth-child(4) { animation-delay: .36s; height: 34px; }
+.player-bars span:nth-child(5) { animation-delay: .48s; height: 44px; }
+
+.song-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.song-card {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.055)),
+        radial-gradient(circle at 100% 0, rgba(255, 209, 102, .16), transparent 46%);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    cursor: pointer;
+    min-height: 190px;
+    padding: 22px;
+    text-align: left;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.song-card:hover {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.20), rgba(255,255,255,.08)),
+        radial-gradient(circle at 100% 0, rgba(123, 223, 242, .20), transparent 46%);
+    border-color: rgba(255, 209, 102, .42);
+    transform: translateY(-4px) rotate(-1deg);
+}
+
+.song-number {
+    color: var(--gold);
+    display: block;
+    font-size: .82rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    margin-bottom: 18px;
+}
+
+.song-card strong {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.song-card small {
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.55;
+}
+
+.jesus-layout {
+    align-items: stretch;
+    grid-template-columns: minmax(300px, .78fr) minmax(0, 1.22fr);
+}
+
+.jesus-art-card {
+    background:
+        radial-gradient(circle at 50% 30%, rgba(255, 241, 199, .28), transparent 34%),
+        linear-gradient(160deg, rgba(123, 223, 242, .20), rgba(142, 125, 255, .18), rgba(255, 79, 195, .12));
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 34px;
+    box-shadow: var(--shadow);
+    min-height: 430px;
+    overflow: hidden;
+    position: relative;
+}
+
+.halo {
+    background: radial-gradient(circle, rgba(255, 209, 102, .58), rgba(255, 209, 102, .16) 42%, transparent 68%);
+    border-radius: 50%;
+    height: 230px;
+    left: 50%;
+    position: absolute;
+    top: 38px;
+    transform: translateX(-50%);
+    width: 230px;
+}
+
+.jesus-portrait {
+    bottom: 0;
+    height: 360px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 260px;
+}
+
+.hair {
+    background: #4a2619;
+    border-radius: 46% 46% 38% 38%;
+    height: 190px;
+    left: 39px;
+    position: absolute;
+    top: 42px;
+    width: 182px;
+}
+
+.face {
+    background: linear-gradient(180deg, #f3c49e, #d99368);
+    border-radius: 45% 45% 48% 48%;
+    height: 144px;
+    left: 62px;
+    position: absolute;
+    top: 66px;
+    width: 136px;
+    z-index: 1;
+}
+
+.eye {
+    background: #3d2119;
+    border-radius: 50%;
+    height: 9px;
+    position: absolute;
+    top: 62px;
+    width: 9px;
+}
+
+.eye.left { left: 38px; }
+.eye.right { right: 38px; }
+
+.smile {
+    border-bottom: 3px solid #7b3829;
+    border-radius: 50%;
+    bottom: 33px;
+    height: 18px;
+    left: 47px;
+    position: absolute;
+    width: 42px;
+}
+
+.robe {
+    background: linear-gradient(135deg, #fff8e8, #dff7ff);
+    border-radius: 48% 48% 0 0;
+    bottom: -40px;
+    height: 190px;
+    left: 9px;
+    position: absolute;
+    width: 242px;
+}
+
+.sash {
+    background: linear-gradient(180deg, #d6365c, #8e1f48);
+    border-radius: 999px;
+    bottom: -20px;
+    height: 190px;
+    left: 128px;
+    position: absolute;
+    transform: rotate(16deg);
+    width: 46px;
+}
+
+.cross-light {
+    color: rgba(255, 241, 199, .62);
+    font-size: 7rem;
+    position: absolute;
+    right: 24px;
+    top: 18px;
+}
+
+.jesus-copy p:not(.eyebrow) {
+    color: #f4e8ff;
+    font-family: "Noto Sans Tamil", "Inter", sans-serif;
+    font-size: 1.12rem;
+    line-height: 1.85;
+}
+
+.tamil-word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.tamil-word-cloud span {
+    animation: wordFloat 2.4s ease-in-out infinite alternate;
+    animation-delay: var(--delay);
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px;
+    color: #fff1c7;
+    font-family: "Noto Sans Tamil", "Inter", sans-serif;
+    font-weight: 900;
+    padding: 11px 15px;
+}
+
+@keyframes spinRecord {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseBars {
+    to { transform: scaleY(.45); }
+}
+
+@keyframes wordFloat {
+    to { transform: translateY(-6px); }
+}
+
+@media (max-width: 920px) {
+    .worship-layout,
+    .jesus-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .song-grid {
+        grid-template-columns: 1fr;
+    }
+}

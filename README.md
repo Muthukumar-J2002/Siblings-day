@@ -5,7 +5,9 @@ A creative one-page birthday website for EJ Papa that mixes Tamil Bible-inspired
 ## Features
 
 - Responsive birthday landing page with Tamil and English copy.
-- Bible-inspired Tamil blessing cards with verse references.
+- Bible-inspired Tamil blessing cards with expanded verse references.
+- John Jebaraj-inspired worship song corner with YouTube search links.
+- CSS illustrated Jesus blessing picture and animated Tamil Bible word cloud.
 - Filterable blessing cards for Tamil, Bible, fun, or all mixed wishes.
 - Interactive birthday confetti and random blessing word picker.
 - Creative Tamil-English birthday wish generator.
