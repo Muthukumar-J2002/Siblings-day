@@ -1,227 +1,239 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EJ Papa Birthday | Tamil Bible Blessings</title>
+    <title>Trip Collection Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header" id="top">
-        <nav class="navbar" aria-label="Primary navigation">
-            <a class="brand" href="#top" aria-label="EJ Papa birthday home">
-                <span class="brand-mark">EJ</span>
-                <span>
-                    <strong>Happy Birthday Papa</strong>
-                    <small>தமிழ் Bible blessings + fun wishes</small>
-                </span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-            <div class="nav-links" id="navLinks">
-                <a href="#blessings">Blessings</a>
-                <a href="#bibleWords">Bible Words</a>
-                <a href="#wishMixer">Wish Mixer</a>
-                <a href="#worshipSongs">Songs</a>
-                <a href="#jesusBlessing">Jesus Picture</a>
-                <a href="#memoryWall">Memory Wall</a>
-                <a class="nav-cta" href="#prayer">Birthday Prayer</a>
-            </div>
-        </nav>
-
-        <section class="hero">
-            <div class="hero-copy">
-                <p class="eyebrow">Grace • Joy • Family • Celebration</p>
-                <h1>இனிய பிறந்தநாள் வாழ்த்துகள், EJ Papa!</h1>
-                <p class="hero-text">A colorful one-page birthday website mixing Tamil Bible-inspired blessing words, John Jebaraj worship song vibes, playful family fun, a Jesus picture, and a sweet prayer for Papa.</p>
-                <div class="hero-actions">
-                    <a class="btn primary" href="#bibleWords">Read Bible words</a>
-                    <a class="btn secondary" href="#worshipSongs">Play worship songs</a>
-                    <button class="btn ghost" id="celebrateBtn" type="button">Throw birthday confetti 🎉</button>
+    <div class="app-shell">
+        <header class="site-header" id="top">
+            <nav class="navbar" aria-label="Primary navigation">
+                <a class="brand" href="#top" aria-label="Trip collection dashboard home">
+                    <span class="brand-mark">TC</span>
+                    <span>
+                        <strong>Trip Collection</strong>
+                        <small>Entry • Dashboard • Estimated totals</small>
+                    </span>
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#entry">New Entry</a>
+                    <a href="#estimate">Estimate View</a>
+                    <a href="#collections">Collections</a>
+                    <a href="#reports">Reports</a>
                 </div>
-            </div>
-            <div class="hero-card" aria-label="Birthday blessing card">
-                <span class="spark">✦</span>
-                <p class="verse-ref">Numbers 6:24-26</p>
-                <h2>கர்த்தர் உங்களை ஆசீர்வதித்து காக்கிறார்.</h2>
-                <p>Papa, may God’s face shine on you, fill your heart with peace, and crown this new year with laughter.</p>
-                <strong>Stay blessed, loved, and joyful!</strong>
-                <div class="mini-praise-strip" aria-label="Praise words">
-                    <span>அல்லேலூயா</span>
-                    <span>கிருபை</span>
-                    <span>ஜெயம்</span>
-                </div>
-            </div>
-        </section>
-    </header>
+            </nav>
 
-    <main>
-        <section class="stats" aria-label="Birthday highlights">
-            <article>
-                <strong>100%</strong>
-                <span>Family love</span>
-            </article>
-            <article>
-                <strong>14+</strong>
-                <span>Bible blessings</span>
-            </article>
-            <article>
-                <strong>∞</strong>
-                <span>Smiles for Papa</span>
-            </article>
-            <article>
-                <strong>🎵</strong>
-                <span>Worship songs</span>
-            </article>
-        </section>
-
-        <section class="section" id="blessings">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">Tamil + English wishes</p>
-                    <h2>Best birthday words for Papa</h2>
-                </div>
-                <div class="filters" aria-label="Blessing filters">
-                    <button class="filter-chip active" type="button" data-filter="all">All mixed</button>
-                    <button class="filter-chip" type="button" data-filter="tamil">Tamil</button>
-                    <button class="filter-chip" type="button" data-filter="bible">Bible</button>
-                    <button class="filter-chip" type="button" data-filter="fun">Fun</button>
-                </div>
-            </div>
-            <div class="blessing-grid" id="blessingGrid" aria-live="polite"></div>
-        </section>
-
-        <section class="section bible" id="bibleWords">
-            <div class="section-heading compact">
-                <div>
-                    <p class="eyebrow">Bible-inspired promise cards</p>
-                    <h2>Tamil Bible words for Papa’s new year</h2>
-                </div>
-                <button class="btn ghost small" id="shuffleVerseBtn" type="button">Shuffle verse ✨</button>
-            </div>
-            <div class="featured-verse" id="featuredVerse"></div>
-            <div class="verse-grid" id="verseGrid"></div>
-            <p class="note">These are short Tamil blessing lines inspired by the listed Bible references, written for a birthday greeting website.</p>
-        </section>
-
-        <section class="section split" id="wishMixer">
-            <div class="panel mixer-panel">
-                <p class="eyebrow">Creative + different + fun</p>
-                <h2>Birthday wish mixer</h2>
-                <p class="muted">Click the button to generate a fresh Tamil-English birthday line for EJ Papa.</p>
-                <div class="generated-wish" id="generatedWish">Papa, your life is our favorite testimony of love, faith, and laughter.</div>
-                <button class="btn primary" id="generateWishBtn" type="button">Generate new wish</button>
-            </div>
-
-            <aside class="panel fun-card">
-                <p class="eyebrow">Family fun zone</p>
-                <h2>Mini celebration</h2>
-                <ul class="fun-list">
-                    <li>🎂 Cake count: one big slice for Papa first.</li>
-                    <li>📸 Photo rule: everyone must smile like it is Sunday best.</li>
-                    <li>🙌 Blessing rule: one Bible word, one hug, one loud “Amen!”</li>
-                </ul>
-                <button class="btn ghost full" id="spinBlessingBtn" type="button">Pick Papa’s blessing word</button>
-                <strong class="blessing-word" id="blessingWord">Grace</strong>
-            </aside>
-        </section>
-
-        <section class="section worship" id="worshipSongs">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">John Jebaraj worship corner</p>
-                    <h2>Play praise songs for EJ Papa’s birthday</h2>
-                </div>
-                <button class="btn ghost small" id="surpriseSongBtn" type="button">Surprise song 🎧</button>
-            </div>
-            <div class="worship-layout">
-                <div class="music-player panel">
-                    <span class="record-disc" aria-hidden="true"></span>
-                    <p class="eyebrow">Now celebrating</p>
-                    <h3 id="songTitle">John Jebaraj praise playlist</h3>
-                    <p id="songMood">Choose a song card and let worship, cake, prayer, and family smiles fill the room.</p>
-                    <div class="player-bars" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span><span></span>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Smart group travel money tracker</p>
+                    <h1>Collect trip payments, track expenses, and view estimated totals instantly.</h1>
+                    <p class="hero-text">Create collection entries for every traveler, compare received money with estimated trip cost, and keep your group dashboard ready before departure.</p>
+                    <div class="hero-actions">
+                        <a class="btn primary" href="#entry">Add collection entry</a>
+                        <a class="btn secondary" href="#dashboard">View dashboard</a>
                     </div>
-                    <a class="btn primary" id="songSearchLink" href="https://www.youtube.com/results?search_query=John+Jebaraj+worship+songs" target="_blank" rel="noreferrer">Open songs on YouTube</a>
-                    <p class="note">Song names are shown as a worship playlist idea; this page does not reproduce copyrighted lyrics.</p>
                 </div>
-                <div class="song-grid" id="songGrid" aria-live="polite"></div>
-            </div>
-        </section>
+                <aside class="hero-card" aria-label="Trip summary preview">
+                    <p class="eyebrow">Live trip health</p>
+                    <div class="hero-total" id="heroTotal">₹0</div>
+                    <span>Total received</span>
+                    <div class="mini-meter" aria-hidden="true"><span id="heroMeter"></span></div>
+                    <p id="heroStatus">Add collections to calculate your trip progress.</p>
+                </aside>
+            </section>
+        </header>
 
-        <section class="section jesus-section" id="jesusBlessing">
-            <div class="jesus-layout">
-                <div class="jesus-art-card" aria-label="Illustrated Jesus blessing picture">
-                    <div class="halo"></div>
-                    <div class="jesus-portrait">
-                        <div class="hair"></div>
-                        <div class="face">
-                            <span class="eye left"></span>
-                            <span class="eye right"></span>
-                            <span class="smile"></span>
+        <main>
+            <section class="dashboard" id="dashboard" aria-label="Trip dashboard totals">
+                <article class="metric-card highlight">
+                    <span class="metric-icon">💰</span>
+                    <p>Total Collected</p>
+                    <strong id="totalCollected">₹0</strong>
+                    <small>All received collection entries</small>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon">🧾</span>
+                    <p>Estimated Cost</p>
+                    <strong id="estimatedCost">₹0</strong>
+                    <small>Transport, stay, food, activities, buffer</small>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon">📌</span>
+                    <p>Balance Needed</p>
+                    <strong id="balanceNeeded">₹0</strong>
+                    <small id="balanceHint">Remaining amount to collect</small>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon">👥</span>
+                    <p>Travelers</p>
+                    <strong id="travelerCount">0</strong>
+                    <small id="perHeadEstimate">₹0 estimated per person</small>
+                </article>
+            </section>
+
+            <section class="section split" id="entry">
+                <div class="panel">
+                    <div class="section-heading compact">
+                        <div>
+                            <p class="eyebrow">Collection entry</p>
+                            <h2>Add traveler payment</h2>
                         </div>
-                        <div class="robe"></div>
-                        <div class="sash"></div>
                     </div>
-                    <span class="cross-light">✝</span>
+                    <form class="entry-form" id="collectionForm">
+                        <label>
+                            Traveler name
+                            <input type="text" id="travelerName" placeholder="Example: Arjun" required>
+                        </label>
+                        <div class="form-row">
+                            <label>
+                                Amount received
+                                <input type="number" id="amountReceived" min="0" step="1" placeholder="5000" required>
+                            </label>
+                            <label>
+                                Payment mode
+                                <select id="paymentMode">
+                                    <option>UPI</option>
+                                    <option>Cash</option>
+                                    <option>Bank Transfer</option>
+                                    <option>Card</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label>
+                                Date
+                                <input type="date" id="paymentDate" required>
+                            </label>
+                            <label>
+                                Status
+                                <select id="paymentStatus">
+                                    <option>Paid</option>
+                                    <option>Advance</option>
+                                    <option>Pending</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label>
+                            Notes
+                            <textarea id="paymentNotes" rows="3" placeholder="Seat preference, pickup point, balance note..."></textarea>
+                        </label>
+                        <button class="btn primary full" type="submit">Save collection entry</button>
+                    </form>
                 </div>
-                <div class="panel jesus-copy">
-                    <p class="eyebrow">Jesus blessing picture</p>
-                    <h2>இயேசுவின் அன்பு Papa-வை சுற்றி காக்கட்டும்</h2>
-                    <p>இந்த பிறந்தநாளில் EJ Papa மேல் இயேசுவின் கிருபை, சமாதானம், சுகம், சந்தோஷம், ஞானம் நிறைந்து வழியட்டும்.</p>
-                    <div class="tamil-word-cloud" id="tamilWordCloud" aria-label="Tamil Bible words"></div>
+
+                <div class="panel estimate-panel" id="estimate">
+                    <div class="section-heading compact">
+                        <div>
+                            <p class="eyebrow">Estimated view</p>
+                            <h2>Trip budget estimator</h2>
+                        </div>
+                    </div>
+                    <form class="estimate-form" id="estimateForm">
+                        <div class="form-row">
+                            <label>
+                                Destination
+                                <input type="text" id="destination" placeholder="Example: Ooty" required>
+                            </label>
+                            <label>
+                                People
+                                <input type="number" id="peopleCount" min="1" step="1" value="8" required>
+                            </label>
+                        </div>
+                        <div class="cost-grid">
+                            <label>Transport <input type="number" id="transportCost" min="0" step="1" value="18000"></label>
+                            <label>Stay <input type="number" id="stayCost" min="0" step="1" value="24000"></label>
+                            <label>Food <input type="number" id="foodCost" min="0" step="1" value="12000"></label>
+                            <label>Activities <input type="number" id="activityCost" min="0" step="1" value="8000"></label>
+                            <label>Buffer <input type="number" id="bufferCost" min="0" step="1" value="5000"></label>
+                        </div>
+                    </form>
+                    <div class="estimate-summary">
+                        <div>
+                            <span>Destination</span>
+                            <strong id="destinationView">Ooty</strong>
+                        </div>
+                        <div>
+                            <span>Total estimated</span>
+                            <strong id="estimateTotalView">₹0</strong>
+                        </div>
+                        <div>
+                            <span>Estimated per head</span>
+                            <strong id="perHeadView">₹0</strong>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="section memory" id="memoryWall">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">Memory wall</p>
-                    <h2>Add a sweet note for Papa</h2>
+            <section class="section" id="collections">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">All total collection view</p>
+                        <h2>Collection records</h2>
+                    </div>
+                    <div class="toolbar">
+                        <input type="search" id="searchInput" placeholder="Search traveler or mode" aria-label="Search collections">
+                        <select id="statusFilter" aria-label="Filter by status">
+                            <option value="all">All status</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Advance">Advance</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                        <button class="btn danger small" id="resetDemoBtn" type="button">Reset demo</button>
+                    </div>
                 </div>
-                <button class="btn ghost small" id="resetNotesBtn" type="button">Reset notes</button>
-            </div>
-            <div class="memory-layout">
-                <form class="panel" id="memoryForm">
-                    <label for="memoryName">Your name</label>
-                    <input id="memoryName" type="text" placeholder="Example: Daughter, Son, Family" required>
-                    <label for="memoryMessage">Birthday note</label>
-                    <textarea id="memoryMessage" rows="4" placeholder="Write a loving memory or blessing..." required></textarea>
-                    <button class="btn primary" type="submit">Add note</button>
-                    <p class="form-note">Notes are saved in this browser with local storage for the birthday page demo.</p>
-                </form>
-                <div class="memory-list" id="memoryList" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <section class="section prayer" id="prayer">
-            <div class="prayer-card">
-                <p class="eyebrow">Birthday prayer</p>
-                <h2>அன்பான இயேசுவே, எங்கள் Papa-வை ஆசீர்வதியும்</h2>
-                <p>Lord Jesus, thank You for EJ Papa’s life. Give him strong health, peaceful days, wise decisions, joyful family moments, and a heart full of Your presence. Let this birthday begin a year of grace, protection, and answered prayers. Amen.</p>
-                <div class="prayer-tags" aria-label="Prayer tags">
-                    <span>சமாதானம்</span>
-                    <span>ஆரோக்கியம்</span>
-                    <span>சந்தோஷம்</span>
-                    <span>ஆசீர்வாதம்</span>
-                    <span>கிருபை</span>
-                    <span>ஜெயம்</span>
-                    <span>வாக்குத்தத்தம்</span>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Traveler</th>
+                                <th>Amount</th>
+                                <th>Mode</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Notes</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="collectionTable"></tbody>
+                    </table>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer class="footer">
-        <strong>EJ Papa Birthday Website</strong>
-        <span>Made with Tamil Bible words, family love, and joyful birthday fun.</span>
-    </footer>
+            <section class="section reports" id="reports">
+                <div class="section-heading compact">
+                    <div>
+                        <p class="eyebrow">Dashboard reports</p>
+                        <h2>Collection progress and payment split</h2>
+                    </div>
+                </div>
+                <div class="report-grid">
+                    <article class="panel progress-panel">
+                        <div class="progress-ring" id="progressRing" style="--progress: 0%">
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <h3>Collection progress</h3>
+                        <p id="progressText">Start adding entries to see how much of the estimate is covered.</p>
+                    </article>
+                    <article class="panel mode-panel">
+                        <h3>Payment mode totals</h3>
+                        <div class="mode-list" id="modeList"></div>
+                    </article>
+                    <article class="panel checklist-panel">
+                        <h3>Trip readiness</h3>
+                        <ul id="readinessList"></ul>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
 
-    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
     <script src="script.js"></script>
 </body>
 </html>
