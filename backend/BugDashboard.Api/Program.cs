@@ -2,6 +2,8 @@ using BugDashboard.Api.Data;
 using BugDashboard.Api.Middleware;
 using BugDashboard.Api.Models;
 using BugDashboard.Api.Services;
+using BugDashboard.Api.Validation;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -16,6 +18,10 @@ var connectionString = builder.Configuration.GetConnectionString("BugTracker")
 builder.Services.AddDbContextPool<BugDbContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36))));
 builder.Services.AddScoped<IBugService, BugService>();
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
@@ -27,6 +33,21 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("DatabaseStartup");
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<BugDbContext>();
+        await dbContext.Database.EnsureCreatedAsync();
+        logger.LogInformation("Bug tracker database schema is ready.");
+    }
+    catch (Exception exception)
+    {
+        logger.LogError(exception, "Database schema initialization failed. Confirm the MySQL server and BugTracker connection string are available.");
+    }
+}
 
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -50,10 +71,10 @@ bugs.MapPost("/", async ([FromBody] BugCreateRequest request, [FromServices] IBu
 {
     var bug = await service.CreateAsync(request, cancellationToken);
     return Results.Created($"/api/bugs/{bug.Id}", bug);
-});
+}).AddEndpointFilter<ValidationFilter<BugCreateRequest>>();
 
 bugs.MapPut("/{id:int}", async (int id, [FromBody] BugUpdateRequest request, [FromServices] IBugService service, CancellationToken cancellationToken) =>
-    await service.UpdateAsync(id, request, cancellationToken) is { } bug ? Results.Ok(bug) : Results.NotFound());
+    await service.UpdateAsync(id, request, cancellationToken) is { } bug ? Results.Ok(bug) : Results.NotFound()).AddEndpointFilter<ValidationFilter<BugUpdateRequest>>();
 
 bugs.MapDelete("/{id:int}", async (int id, [FromServices] IBugService service, CancellationToken cancellationToken) =>
     await service.DeleteAsync(id, cancellationToken) ? Results.NoContent() : Results.NotFound());

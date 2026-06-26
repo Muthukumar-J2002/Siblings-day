@@ -148,3 +148,22 @@ footer button {
     flex-direction: column;
   }
 }
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.empty {
+  border: 1px dashed #cbd5e1;
+  border-radius: 18px;
+  color: #64748b;
+  padding: 18px;
+  text-align: center;
+}
+
+.bug-card small {
+  color: #64748b;
+  display: block;
+  margin-bottom: 16px;
+}
