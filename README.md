@@ -20,3 +20,7 @@ npm start
 ```
 
 The Angular app calls `http://localhost:5000/api` by default. Update `frontend/src/environments/environment.ts` if your API runs elsewhere.
+## Vercel frontend deployment
+
+This repository keeps the Angular application in the `frontend/` subdirectory, so Vercel needs an explicit root-level `vercel.json`. The config builds the Angular app from that subdirectory, publishes the browser bundle, and rewrites non-API routes to `index.html` so direct page loads do not return Vercel `NOT_FOUND` 404 responses.
+
