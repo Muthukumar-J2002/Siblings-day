@@ -1,25 +1,22 @@
-# EJ Papa Birthday Website
+# Bug Management Dashboard
 
-A creative one-page birthday website for EJ Papa that mixes Tamil Bible-inspired blessing words, English birthday wishes, family fun, confetti, a random wish generator, and a local memory wall.
+A full-stack bug tracking dashboard with an Angular frontend, .NET Core API, and MySQL persistence. It supports creating, reading, updating, deleting, filtering, and summarizing bugs across Open, Closed, Work In Progress, Hold, and Rejected statuses.
 
-## Features
-
-- Responsive birthday landing page with Tamil and English copy.
-- Bible-inspired Tamil blessing cards with expanded verse references.
-- John Jebaraj-inspired worship song corner with YouTube search links.
-- CSS illustrated Jesus blessing picture and animated Tamil Bible word cloud.
-- Filterable blessing cards for Tamil, Bible, fun, or all mixed wishes.
-- Interactive birthday confetti and random blessing word picker.
-- Creative Tamil-English birthday wish generator.
-- Memory wall form saved with browser `localStorage` for demo notes.
-- Birthday prayer section with Tamil blessing tags.
-
-## Run locally
-
-Open `index.html` directly in a browser, or serve the folder with any static server:
+## Backend
 
 ```bash
-python3 -m http.server 8000
+dotnet restore backend/BugDashboard.Api/BugDashboard.Api.csproj
+dotnet run --project backend/BugDashboard.Api
 ```
 
-Then visit `http://localhost:8000`.
+Configure MySQL using `ConnectionStrings__BugTracker`. The API uses EF Core `AddDbContextPool` and MySQL connection-string pooling settings for managed database connection pooling.
+
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+The Angular app calls `http://localhost:5000/api` by default. Update `frontend/src/environments/environment.ts` if your API runs elsewhere.

@@ -1,0 +1,43 @@
+<main class="shell">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Bug tracking operations</p>
+      <h1>Bug Management Dashboard</h1>
+      <p>Track open, closed, work in progress, hold, and rejected defects with a clean Angular interface backed by a .NET Core API and MySQL.</p>
+    </div>
+    <button class="refresh" type="button" (click)="refresh()">Refresh</button>
+  </section>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <section class="summary-grid">
+    <article *ngFor="let item of summary" class="summary-card">
+      <span>{{ statusLabel(item.status) }}</span>
+      <strong>{{ item.count }}</strong>
+    </article>
+  </section>
+
+  <section class="layout">
+    <form class="panel form" (ngSubmit)="saveBug()">
+      <h2>{{ editingId ? 'Update bug' : 'Create bug' }}</h2>
+      <label>Title<input name="title" [(ngModel)]="form.title" required maxlength="160"></label>
+      <label>Description<textarea name="description" [(ngModel)]="form.description" required rows="5" maxlength="4000"></textarea></label>
+      <div class="row">
+        <label>Status<select name="status" [(ngModel)]="form.status"><option *ngFor="let status of statuses" [ngValue]="status">{{ statusLabel(status) }}</option></select></label>
+        <label>Priority<select name="priority" [(ngModel)]="form.priority"><option *ngFor="let priority of priorities" [ngValue]="priority">{{ priority }}</option></select></label>
+      </div>
+      <label>Assignee<input name="assignee" [(ngModel)]="form.assignee" maxlength="80" placeholder="Optional owner"></label>
+      <div class="actions"><button class="primary" type="submit">{{ editingId ? 'Save changes' : 'Create bug' }}</button><button type="button" (click)="resetForm()">Clear</button></div>
+    </form>
+
+    <section class="panel list">
+      <div class="list-head"><h2>Bug list</h2><select [(ngModel)]="selectedStatus" (ngModelChange)="refresh()"><option value="">All statuses</option><option *ngFor="let status of statuses" [ngValue]="status">{{ statusLabel(status) }}</option></select></div>
+      <p *ngIf="loading">Loading bugs...</p>
+      <article *ngFor="let bug of bugs" class="bug-card" [class]="bug.status">
+        <div><span class="pill">{{ statusLabel(bug.status) }}</span><span class="priority">{{ bug.priority }}</span></div>
+        <h3>{{ bug.title }}</h3><p>{{ bug.description }}</p>
+        <footer><span>Owner: {{ bug.assignee || 'Unassigned' }}</span><div><button (click)="editBug(bug)">Edit</button><button class="danger" (click)="deleteBug(bug.id)">Delete</button></div></footer>
+      </article>
+    </section>
+  </section>
+</main>
