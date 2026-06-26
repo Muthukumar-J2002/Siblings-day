@@ -24,7 +24,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "bug-dashboard:build"
+            "buildTarget": "bug-dashboard:build",
+            "proxyConfig": "proxy.conf.json"
           }
         }
       }

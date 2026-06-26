@@ -19,4 +19,4 @@ npm install
 npm start
 ```
 
-The Angular app calls `http://localhost:5000/api` by default. Update `frontend/src/environments/environment.ts` if your API runs elsewhere.
+The Angular app calls `/api` on the same origin by default so deployed URLs work without hard-coded localhost values. During local development, `npm start` uses `frontend/proxy.conf.json` to proxy `/api` requests to `http://localhost:5000`.
