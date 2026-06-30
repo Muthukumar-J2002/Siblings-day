@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   selectedStatus: BugStatus | '' = '';
   editingId: number | null = null;
   loading = false;
+  saving = false;
   error = '';
 
   constructor(private readonly api: BugApiService) {}
@@ -39,8 +40,14 @@ export class AppComponent implements OnInit {
   }
 
   saveBug(): void {
-    const request = this.editingId ? this.api.updateBug(this.editingId, this.form) : this.api.createBug(this.form);
-    request.subscribe({ next: () => { this.resetForm(); this.refresh(); }, error: () => this.error = 'Save failed. Please review the form and try again.' });
+    this.saving = true;
+    this.error = '';
+    const payload: BugForm = { ...this.form, title: this.form.title.trim(), description: this.form.description.trim(), assignee: this.form.assignee?.trim() };
+    const request = this.editingId ? this.api.updateBug(this.editingId, payload) : this.api.createBug(payload);
+    request.subscribe({
+      next: () => { this.saving = false; this.resetForm(); this.refresh(); },
+      error: () => { this.saving = false; this.error = 'Save failed. Please complete title, description, status, and priority, then try again.'; }
+    });
   }
 
   editBug(bug: BugItem): void {

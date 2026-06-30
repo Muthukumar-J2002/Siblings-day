@@ -62,5 +62,5 @@ public sealed class BugService(BugDbContext dbContext, ILogger<BugService> logge
         return Enum.GetValues<BugStatus>().Select(status => grouped.FirstOrDefault(item => item.Status == status) ?? new BugSummary(status, 0)).ToList();
     }
 
-    private static string NormalizePriority(string priority) => string.IsNullOrWhiteSpace(priority) ? "Medium" : priority.Trim();
+    private static string NormalizePriority(string? priority) => string.IsNullOrWhiteSpace(priority) ? "Medium" : priority.Trim();
 }

@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations;
 namespace BugDashboard.Api.Models;
 
 public sealed record BugCreateRequest(
-    [Required, MaxLength(160)] string Title,
-    [Required, MaxLength(4000)] string Description,
+    [Required, StringLength(160, MinimumLength = 3)] string Title,
+    [Required, StringLength(4000, MinimumLength = 3)] string Description,
     BugStatus Status,
-    [MaxLength(80)] string? Assignee,
-    [MaxLength(40)] string Priority);
+    [StringLength(80)] string? Assignee,
+    [StringLength(40)] string? Priority);
 
 public sealed record BugUpdateRequest(
-    [Required, MaxLength(160)] string Title,
-    [Required, MaxLength(4000)] string Description,
+    [Required, StringLength(160, MinimumLength = 3)] string Title,
+    [Required, StringLength(4000, MinimumLength = 3)] string Description,
     BugStatus Status,
-    [MaxLength(80)] string? Assignee,
-    [MaxLength(40)] string Priority);
+    [StringLength(80)] string? Assignee,
+    [StringLength(40)] string? Priority);
 
 public sealed record BugSummary(BugStatus Status, int Count);
